@@ -3,9 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
+    "bootstrap": "^3.3.7",
+    "connected-react-router": "^4.2.3",
+    "flat": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-bootstrap": "^0.31.2",
+    "react-bootstrap-table": "^4.0.2",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11"
+    "react-dropzone": "^4.1.0",
+    "react-notification-system-redux": "^1.1.4",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.0",
+    "react-scripts": "1.0.11",
+    "react-select": "^1.0.0-rc.5",
+    "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
