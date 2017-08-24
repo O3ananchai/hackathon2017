@@ -1,0 +1,1 @@
+exports.getRoomsList = require('./getRoomsList')
