@@ -24,6 +24,7 @@
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
+    "faker": "^4.1.0",
     "nodemon": "^1.11.0"
   }
 }
