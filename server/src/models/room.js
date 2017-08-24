@@ -8,7 +8,6 @@ const roomSchema = new Schema({
     ref: 'Owner'
   },
   address: String,
-  telephone: String,
   price: { type: Number, default: 0 },
   status: Number
 })
