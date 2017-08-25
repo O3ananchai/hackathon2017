@@ -1,12 +1,19 @@
 import React, { PureComponent } from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import map from 'lodash/map'
+import flat from 'flat'
 
 import * as actions from '../../actions'
 
 class RoomDataTable extends PureComponent {
-  componentDidMount() {
-    this.props.fetchRooms()
+  renderAddress = (cell, row) => {
+    return (
+      <Link to={`/search-room/${row._id}`}>
+        {row.address}
+      </Link>
+    )
   }
 
   render() {
@@ -27,8 +34,10 @@ class RoomDataTable extends PureComponent {
         <TableHeaderColumn dataField="owner.name">
           ชื่อเจ้าของ
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="address">ที่อยู่</TableHeaderColumn>
-        <TableHeaderColumn dataField="telephone">
+        <TableHeaderColumn dataField="address" dataFormat={this.renderAddress}>
+          ที่อยู่
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="owner.phoneNumber" width="200">
           หมายเลขโทรศัพท์
         </TableHeaderColumn>
         <TableHeaderColumn
@@ -36,6 +45,7 @@ class RoomDataTable extends PureComponent {
           dataAlign="right"
           dataSort
           dataField="price"
+          width="100"
         >
           ราคา
         </TableHeaderColumn>
@@ -44,6 +54,8 @@ class RoomDataTable extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ room: { rooms } }) => ({ rooms })
+const mapStateToProps = ({ searchRoom: { rooms } }) => ({
+  rooms: map(rooms, flat)
+})
 
 export default connect(mapStateToProps, actions)(RoomDataTable)

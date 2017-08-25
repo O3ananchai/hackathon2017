@@ -14,13 +14,13 @@ class SearchRoom extends PureComponent {
   render() {
     return (
       <div className="container-fluid">
-        <Card title="Packages" description="Manage tour packages">
-          <div className="row">
-            <PriceSearchForm />
+        <Card title="ค้นหาห้องพัก">
+          <div className="row" style={{ height: 110 }}>
+            <PriceSearchForm onSubmit={this.onSubmit} />
           </div>
           <div className="row">
             <div className="col-md-12">
-              <RoomDataTable onSubmit={this.onSubmit} />
+              <RoomDataTable />
             </div>
           </div>
         </Card>

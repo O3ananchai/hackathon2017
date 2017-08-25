@@ -21,9 +21,11 @@
     "react-router-dom": "^4.2.0",
     "react-scripts": "1.0.11",
     "react-select": "^1.0.0-rc.5",
+    "react-slick": "^0.14.11",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "slick-carousel": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
