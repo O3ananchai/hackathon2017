@@ -9,13 +9,24 @@ class PriceSearchForm extends PureComponent {
     const { handleSubmit, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <Field
-          name="price"
-          component={renderField}
-          label="ช่วงราคา"
-          type="select"
-        />
-        <Button bsStyle="primary" disabled={submitting} type="submit" />
+        <div className="col-md-6">
+          <Field
+            name="price"
+            component={renderField}
+            label="ช่วงราคา"
+            type="select"
+          />
+        </div>
+        <div className="col-md-6">
+          <Button
+            style={{ marginTop: 23 }}
+            bsStyle="primary"
+            disabled={submitting}
+            type="submit"
+          >
+            ค้นหา
+          </Button>
+        </div>
       </form>
     )
   }
@@ -24,7 +35,7 @@ class PriceSearchForm extends PureComponent {
 const validate = values => {
   const errors = {}
   if (!values.price) {
-    errors.price = 'กรุณาระบุช่วงราคา'
+    errors.price = 'กรุณาระบุช่วงราคาที่ต้องการค้นหา'
   }
   return errors
 }
