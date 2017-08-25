@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import flow from 'lodash/fp/flow'
+import thru from 'lodash/fp/thru'
+import split from 'lodash/fp/split'
 import startCase from 'lodash/startCase'
 
 class Title extends PureComponent {
@@ -13,7 +16,11 @@ class Title extends PureComponent {
 }
 
 const mapStateToProps = state => {
-  return { title: startCase(state.router.location.pathname) }
+  return {
+    title: flow(split('/'), thru(items => items[1]), startCase)(
+      state.router.location.pathname
+    )
+  }
 }
 
 export default connect(mapStateToProps)(Title)
