@@ -44,6 +44,6 @@ class RoomDataTable extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ room: { rooms } }) => ({ rooms })
+const mapStateToProps = ({ searchRoom: { rooms } }) => ({ rooms })
 
 export default connect(mapStateToProps, actions)(RoomDataTable)
