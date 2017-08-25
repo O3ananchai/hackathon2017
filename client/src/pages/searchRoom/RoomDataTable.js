@@ -1,12 +1,21 @@
 import React, { PureComponent } from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import map from 'lodash/map'
 import flat from 'flat'
 
 import * as actions from '../../actions'
 
 class RoomDataTable extends PureComponent {
+  renderAddress = (cell, row) => {
+    return (
+      <Link to={`/search-room/${row._id}`}>
+        {row.address}
+      </Link>
+    )
+  }
+
   render() {
     const { rooms } = this.props
     return (
@@ -25,7 +34,9 @@ class RoomDataTable extends PureComponent {
         <TableHeaderColumn dataField="owner.name">
           ชื่อเจ้าของ
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="address">ที่อยู่</TableHeaderColumn>
+        <TableHeaderColumn dataField="address" dataFormat={this.renderAddress}>
+          ที่อยู่
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="owner.phoneNumber" width="200">
           หมายเลขโทรศัพท์
         </TableHeaderColumn>
