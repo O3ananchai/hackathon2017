@@ -1,5 +1,4 @@
 const Room = require('../models/room')
-const Owner = require('../models/owner')
 
 module.exports = (startPrice, endPrice) => {
   const find =
