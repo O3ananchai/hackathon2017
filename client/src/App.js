@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import NoMatch from './components/NoMatch'
 import Layout from './components/layout'
 import SearchRoom from './pages/searchRoom'
+import RoomDetail from './pages/roomDetail'
 import { history } from './store'
 
 class App extends PureComponent {
@@ -21,7 +22,8 @@ class App extends PureComponent {
                 exact
                 component={() => <Redirect to="/search-room" />}
               />
-              <Route path="/search-room" component={SearchRoom} />
+              <Route exact path="/search-room" component={SearchRoom} />
+              <Route path="/search-room/:id" component={RoomDetail} />
               <Route component={NoMatch} />
             </Switch>
           </Layout>
