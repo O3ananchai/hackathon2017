@@ -4,6 +4,7 @@ import Slider from 'react-slick'
 class ImageSlider extends PureComponent {
   render() {
     const settings = {
+      focusOnSelect: true,
       className: 'center',
       centerMode: true,
       infinite: true,
