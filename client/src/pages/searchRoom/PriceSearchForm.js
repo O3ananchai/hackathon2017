@@ -10,7 +10,7 @@ class PriceSearchForm extends PureComponent {
     const { handleSubmit, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <div className="col-md-6">
+        <div className="col-md-3">
           <Field
             name="price"
             component={renderField}
