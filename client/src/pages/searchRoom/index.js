@@ -14,8 +14,8 @@ class SearchRoom extends PureComponent {
   render() {
     return (
       <div className="container-fluid">
-        <Card title="Packages" description="Manage tour packages">
-          <div className="row">
+        <Card title="ค้นหาห้องพัก">
+          <div className="row" style={{ height: 110 }}>
             <PriceSearchForm />
           </div>
           <div className="row">
