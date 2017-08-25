@@ -9,7 +9,9 @@ const rooms = require('./roomsData')
 
 mongoose.Promise = global.Promise
 
-mongoose.connect(`mongodb://${MONGO_DB_HOST}/hackathon`)
+mongoose.connect(`mongodb://${MONGO_DB_HOST}/hackathon`, {
+  useMongoClient: true
+})
 mongoose.connection.once('open', async () => {
   await mongoose.connection.db.dropDatabase()
   await Promise.all([Owner.insertMany(owners), Room.insertMany(rooms)])
