@@ -4,7 +4,7 @@ class DisplayItem extends PureComponent {
   render() {
     const { title, text } = this.props
     return (
-      <div className="form-group">
+      <div className="form-group" style={{ margin: 0 }}>
         <label className="col-sm-2">
           {title} :
         </label>
