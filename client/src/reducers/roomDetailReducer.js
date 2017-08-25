@@ -1,7 +1,7 @@
 import { FETCH_ROOM_DETAIL_SUCCESS } from '../actions/types'
 
 const initialState = {
-  room: {}
+  room: null
 }
 
 export default (state = initialState, action) => {
