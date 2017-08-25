@@ -12,6 +12,4 @@ _.times(2, () => {
   })
 })
 
-_.map(owners, owner => new Owner(owner))
-
-module.exports = owners
+module.exports = _.map(owners, owner => new Owner(owner))
