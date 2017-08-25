@@ -11,7 +11,12 @@ export const fetchRooms = ({ price }) => async dispatch => {
       `/rooms?startPrice=${startPrice}&endPrice=${endPrice}`
     )
     dispatch({ type: FETCH_ROOMS_SUCCESS, payload: data })
-    dispatch(success({ title: 'แจ้งเตือน', message: 'ค้นหาข้อมูลเรียบร้อย' }))
+    dispatch(
+      success({
+        title: 'แจ้งเตือน',
+        message: `ค้นหาข้อมูลเรียบร้อย พบข้อมูลทั้งสิ้น ${data.length} รายการ`
+      })
+    )
   } catch (e) {
     dispatch(error({ title: 'แจ้งเตือน', message: e.message }))
   }
