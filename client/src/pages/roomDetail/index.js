@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/lib/Button'
 
 import Card from '../../components/Card'
 import DisplayItem from './DisplayItem'
+import ImageSlider from './ImageSlider'
 import * as actions from '../../actions'
 
 class RoomDetail extends PureComponent {
@@ -30,6 +31,7 @@ class RoomDetail extends PureComponent {
             <DisplayItem title="ราคา" text={room.price} />
             <DisplayItem title="มัดจำ" text={`${room.pledge} เดือน`} />
             <DisplayItem title="โทรศัพท์" text={room.owner.phoneNumber} />
+            <ImageSlider />
             <div className="form-group">
               <div className="col-sm-offset-2 col-som-10">
                 <Button bsStyle="primary">จอง</Button>
