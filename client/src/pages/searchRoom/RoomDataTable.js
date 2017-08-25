@@ -5,10 +5,6 @@ import { connect } from 'react-redux'
 import * as actions from '../../actions'
 
 class RoomDataTable extends PureComponent {
-  componentDidMount() {
-    this.props.fetchRooms()
-  }
-
   render() {
     const { rooms } = this.props
     return (
