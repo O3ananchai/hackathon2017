@@ -8,10 +8,11 @@ const roomSchema = new Schema({
     ref: 'Owner'
   },
   address: String,
-  size: String,
+  width: { type: Number, default: 0 },
+  long: { type: Number, default: 0 },
   price: { type: Number, default: 0 },
-  pledge: String,
-  status: Number
+  pledge: { type: Number, default: 0 },
+  status: { type: Number, default: 0 }
 })
 
 const Room = mongoose.model('Room', roomSchema)
