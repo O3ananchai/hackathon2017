@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import Button from 'react-bootstrap/lib/Button'
 
+import searchOptions from './searchOptions'
 import renderField from '../../components/renderField'
 
 class PriceSearchForm extends PureComponent {
@@ -13,6 +14,7 @@ class PriceSearchForm extends PureComponent {
           <Field
             name="price"
             component={renderField}
+            options={searchOptions}
             label="ช่วงราคา"
             type="select"
           />
