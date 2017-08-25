@@ -5,8 +5,8 @@ class DisplayItem extends PureComponent {
     const { title, text } = this.props
     return (
       <div className="form-group">
-        <label className="col-sm-2 control-label">
-          {title}
+        <label className="col-sm-2">
+          {title} :
         </label>
         <div className="col-sm-10">
           {text}
