@@ -1,4 +1,3 @@
-require('../services/passport')
 const passport = require('passport')
 const c = require('../controllers')
 

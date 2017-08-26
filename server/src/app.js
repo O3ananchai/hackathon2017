@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+require('./services/passport')
 const router = require('./routes')
 const { MONGO_DB_HOST } = require('./config')
 const {
@@ -20,7 +21,9 @@ app.use(bodyParser.json())
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'))
   app.use(detailLogger)
-  mongoose.connect(`mongodb://${MONGO_DB_HOST}/hackathon`, { useMongoClient: true })
+  mongoose.connect(`mongodb://${MONGO_DB_HOST}/hackathon`, {
+    useMongoClient: true
+  })
 }
 
 router(app)
