@@ -26,10 +26,10 @@ module.exports = app => {
       failureRedirect: '/sign-in'
     })
   )
-  app.get('/rooms', c.getRoomsList)
-  app.get('/rooms/:id', c.getRoom)
-  app.get('/current-user', (req, res) => res.send(req.user))
-  app.get('/logout', (req, res) => {
+  app.get('/api/rooms', c.getRoomsList)
+  app.get('/api/rooms/:id', c.getRoom)
+  app.get('/api/current-user', (req, res) => res.send(req.user))
+  app.get('/api/logout', (req, res) => {
     req.logout()
     return res.redirect('/')
   })
