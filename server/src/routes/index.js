@@ -22,4 +22,7 @@ module.exports = app => {
   )
   app.get('/rooms', c.getRoomsList)
   app.get('/rooms/:id', c.getRoom)
+  app.get('/current_user', (req, res) => {
+    res.send(req.user)
+  })
 }
