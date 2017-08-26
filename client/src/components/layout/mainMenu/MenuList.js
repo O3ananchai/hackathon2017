@@ -6,8 +6,13 @@ class MenuList extends PureComponent {
   render() {
     return (
       <ul className="nav">
-        <MenuItem icon="assignment" path="/search-room" text="ค้นหาห้องพัก" />
-        <MenuItem icon="assignment" path="/upload-slip" text="แจ้งชำระเงิน" />
+        <MenuItem
+          icon="account_circle"
+          path="/signin"
+          text="สมัครสมาชิก/เข้าสู่ระบบ"
+        />
+        <MenuItem icon="search" path="/search-room" text="ค้นหาห้องพัก" />
+        <MenuItem icon="cloud_upload" path="/upload-slip" text="แจ้งชำระเงิน" />
         <MenuItem icon="assignment" path="/report" text="รายงาน" />
       </ul>
     )
