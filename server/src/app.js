@@ -5,6 +5,10 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 require('./services/passport')
+require('./models/booking')
+require('./models/customer')
+require('./models/owner')
+require('./models/room')
 const router = require('./routes')
 const { MONGO_DB_HOST } = require('./config')
 const {
