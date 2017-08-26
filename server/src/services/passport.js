@@ -4,6 +4,19 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const keys = require('../config/keys')
 const Customer = require('mongoose').model('Customer')
 
+const authenticate = async (accessToken, refreshToken, profile, done) => {
+  const existingCustomer = await Customer.findOne({ oAuthId: profile.id })
+  if (existingCustomer) {
+    done(null, existingCustomer)
+  } else {
+    const newCustomer = await Customer.create({
+      oAuthId: profile.id,
+      displayName: profile.displayName
+    })
+    done(null, newCustomer)
+  }
+}
+
 passport.use(
   new FacebookStrategy(
     {
@@ -11,12 +24,7 @@ passport.use(
       clientSecret: keys.facebookClientSecret,
       callbackURL: '/auth/facebook/callback'
     },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken)
-      console.log(refreshToken)
-      console.log(profile)
-      done()
-    }
+    authenticate
   )
 )
 passport.use(
@@ -26,8 +34,6 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
     },
-    (accessToken, refreshToken, profile, done) => {
-      Customer.create({ oAuthId: profile.id, displayName: profile.displayName })
-    }
+    authenticate
   )
 )
