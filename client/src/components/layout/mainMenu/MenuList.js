@@ -8,7 +8,7 @@ class MenuList extends PureComponent {
       <ul className="nav">
         <MenuItem
           icon="account_circle"
-          path="/signin"
+          path="/sign-in"
           text="สมัครสมาชิก/เข้าสู่ระบบ"
         />
         <MenuItem icon="search" path="/search-room" text="ค้นหาห้องพัก" />
