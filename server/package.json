@@ -6,7 +6,9 @@
   "scripts": {
     "seed": "node scripts/seed/index.js",
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "server": "nodemon src/index.js",
+    "client": "npm run start --prefix ../client",
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "author": "Paiboon Auengkongkatong",
   "license": "ISC",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "concurrently": "^3.5.0",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
