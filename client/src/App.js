@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import { ConnectedRouter as Router } from 'connected-react-router'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import * as actions from './actions'
 import NoMatch from './components/NoMatch'
 import Layout from './components/layout'
 import SearchRoom from './pages/searchRoom'
@@ -12,6 +14,10 @@ import Report from './pages/report'
 import { history } from './store'
 
 class App extends PureComponent {
+  componentDidMount() {
+    this.props.fetchUser()
+  }
+
   render() {
     return (
       <Router history={history}>
@@ -35,4 +41,4 @@ class App extends PureComponent {
   }
 }
 
-export default App
+export default connect(null, actions)(App)
