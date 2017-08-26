@@ -1,28 +1,26 @@
-const c = require('../controllers')
+require('../services/passport')
 const passport = require('passport')
-const GoogleStrategy = require('passport-google-oauth20').Strategy
-const keys = require('../config/keys')
+const c = require('../controllers')
 
 module.exports = app => {
-  passport.use(
-    new GoogleStrategy(
-      {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback'
-      },
-      (accessToken, refreshToken, profile, done) => {
-        console.log(accessToken)
-        console.log(refreshToken)
-        console.log(profile)
-      }
-    )
-  )
   app.get(
     '/auth/google',
     passport.authenticate('google', { scope: ['profile', 'email'] })
   )
   app.get('/auth/google/callback', passport.authenticate('google'))
+  app.get(
+    '/auth/facebook',
+    passport.authenticate('facebook', {
+      scope: ['user_about_me', 'manage_pages', 'email']
+    })
+  )
+  app.get(
+    '/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      successRedirect: '/profile',
+      failureRedirect: '/'
+    })
+  )
   app.get('/rooms', c.getRoomsList)
   app.get('/rooms/:id', c.getRoom)
 }
