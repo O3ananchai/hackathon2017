@@ -2,6 +2,7 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const keys = require('../config/keys')
+const Customer = require('mongoose').model('Customer')
 
 passport.use(
   new FacebookStrategy(
@@ -26,9 +27,7 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken)
-      console.log(refreshToken)
-      console.log(profile)
+      Customer.create({ oAuthId: profile.id, displayName: profile.displayName })
     }
   )
 )
