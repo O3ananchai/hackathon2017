@@ -4,6 +4,15 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const keys = require('../config/keys')
 const Customer = require('mongoose').model('Customer')
 
+passport.serializeUser((customer, done) => {
+  done(null, customer.id)
+})
+
+passport.deserializeUser(async (id, done) => {
+  const customer = await Customer.findById(id)
+  done(null, customer)
+})
+
 const authenticate = async (accessToken, refreshToken, profile, done) => {
   const existingCustomer = await Customer.findOne({ oAuthId: profile.id })
   if (existingCustomer) {
@@ -27,6 +36,7 @@ passport.use(
     authenticate
   )
 )
+
 passport.use(
   new GoogleStrategy(
     {
