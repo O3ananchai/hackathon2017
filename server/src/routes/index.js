@@ -6,7 +6,13 @@ module.exports = app => {
     '/auth/google',
     passport.authenticate('google', { scope: ['profile', 'email'] })
   )
-  app.get('/auth/google/callback', passport.authenticate('google'))
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google', {
+      successRedirect: '/search-room',
+      failureRedirect: '/sign-in'
+    })
+  )
   app.get(
     '/auth/facebook',
     passport.authenticate('facebook', {
@@ -16,17 +22,15 @@ module.exports = app => {
   app.get(
     '/auth/facebook/callback',
     passport.authenticate('facebook', {
-      successRedirect: '/profile',
-      failureRedirect: '/'
+      successRedirect: '/search-room',
+      failureRedirect: '/sign-in'
     })
   )
   app.get('/rooms', c.getRoomsList)
   app.get('/rooms/:id', c.getRoom)
-  app.get('/current_user', (req, res) => {
-    res.send(req.user)
-  })
+  app.get('/current-user', (req, res) => res.send(req.user))
   app.get('/logout', (req, res) => {
     req.logout()
-    res.send(req.user)
+    return res.redirect('/')
   })
 }
