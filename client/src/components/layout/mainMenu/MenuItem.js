@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import flow from 'lodash/fp/flow'
-import startCase from 'lodash/fp/startCase'
 import split from 'lodash/fp/split'
 import thru from 'lodash/fp/thru'
 

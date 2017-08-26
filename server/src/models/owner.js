@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 
 const ownerSchema = new Schema({
   name: {
@@ -13,6 +13,4 @@ const ownerSchema = new Schema({
   }
 })
 
-const Owner = mongoose.model('Owner', ownerSchema)
-
-module.exports = Owner
+mongoose.model('Owner', ownerSchema)
