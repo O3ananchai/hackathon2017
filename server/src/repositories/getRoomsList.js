@@ -1,4 +1,4 @@
-const Room = require('../models/room')
+const Room = require('mongoose').model('Room')
 
 module.exports = (startPrice, endPrice) => {
   const find =
