@@ -7,6 +7,4 @@ const customerSchema = new Schema({
   displayName: String
 })
 
-const Customer = mongoose.model('Customer', customerSchema)
-
-module.exports = Customer
+mongoose.model('Customer', customerSchema)
