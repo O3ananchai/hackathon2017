@@ -5,9 +5,10 @@ import MenuItem from './MenuItem'
 
 class MenuList extends PureComponent {
   render() {
+    const { auth } = this.props
     return (
       <ul className="nav">
-        {!this.props.auth
+        {!auth
           ? <MenuItem
               icon="account_circle"
               path="/sign-in"
@@ -15,7 +16,13 @@ class MenuList extends PureComponent {
             />
           : null}
         <MenuItem icon="search" path="/search-room" text="ค้นหาห้องพัก" />
-        <MenuItem icon="cloud_upload" path="/upload-slip" text="แจ้งชำระเงิน" />
+        {auth
+          ? <MenuItem
+              icon="cloud_upload"
+              path="/upload-slip"
+              text="แจ้งชำระเงิน"
+            />
+          : null}
         <MenuItem icon="assignment" path="/report" text="รายงาน" />
       </ul>
     )
