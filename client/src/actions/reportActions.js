@@ -5,7 +5,6 @@ import {
   FETCH_BOOKINGS_SUCCESS,
   FETCH_OWNERS_SUCCESS,
   FETCH_BOOKING_SUCCESS,
-  OPEN_SLIP_MODAL,
   CLOSE_SLIP_MODAL
 } from './types'
 
@@ -35,7 +34,7 @@ export const fetchBookings = owner => async dispatch => {
 
 export const fetchBooking = bookingId => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/bookings/:id`)
+    const { data } = await axios.get(`/api/bookings/${bookingId}`)
     dispatch({ type: FETCH_BOOKING_SUCCESS, payload: data.slip })
   } catch (e) {
     dispatch(error({ title: 'แจ้งเตือน', message: e.message }))
