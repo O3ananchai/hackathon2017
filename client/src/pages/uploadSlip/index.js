@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
 import Card from '../../components/Card'
 import UploadSlipForm from './UploadSlipForm'
+import * as actions from '../../actions'
 
 class UploadSlip extends PureComponent {
   onSubmit = values => {
-    console.log(values)
+    this.props.uploadSlip(values)
   }
 
   render() {
@@ -23,4 +25,4 @@ class UploadSlip extends PureComponent {
   }
 }
 
-export default UploadSlip
+export default connect(null, actions)(UploadSlip)
