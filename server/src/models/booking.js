@@ -21,7 +21,7 @@ const bookingSchema = new Schema({
   },
   startDate: Date,
   endDate: Date,
-  slip: { data: Buffer, contentType: String }
+  slip: String
 })
 
 mongoose.model('Booking', bookingSchema)
