@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import * as actions from './actions'
+import PrivateRoute from './components/PrivateRoute'
 import NoMatch from './components/NoMatch'
 import Layout from './components/layout'
 import SearchRoom from './pages/searchRoom'
@@ -31,7 +32,7 @@ class App extends PureComponent {
             <Route path="/sign-in" component={SignIn} />
             <Route exact path="/search-room" component={SearchRoom} />
             <Route path="/search-room/:id" component={RoomDetail} />
-            <Route path="/upload-slip" component={UploadSlip} />
+            <PrivateRoute path="/upload-slip" component={UploadSlip} />
             <Route path="/report" component={Report} />
             <Route component={NoMatch} />
           </Switch>
