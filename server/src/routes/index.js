@@ -1,7 +1,7 @@
 const passport = require('passport')
 const c = require('../controllers')
 const requireAuth = require('../middlewares/requireAuth')
-const bookingReport = require('../reports/booking')
+const bookingsReport = require('../reports/bookings')
 
 module.exports = app => {
   app.get(
@@ -28,7 +28,7 @@ module.exports = app => {
       failureRedirect: '/sign-in'
     })
   )
-  app.get('/api/reports/booking', bookingReport)
+  app.get('/api/reports/bookings', bookingsReport)
   app.get('/api/owners', c.getOwnersList)
   app.get('/api/rooms', c.getRoomsList)
   app.get('/api/rooms/:id', c.getRoom)
