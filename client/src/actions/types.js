@@ -9,3 +9,5 @@ export const ADD_BOOKING_SUCCESS = 'add_booking_success'
 
 export const FETCH_NO_SLIP_BOOKINGS_SUCCESS = 'fetch_no_slip_bookings_success'
 export const UPLOAD_SLIP_SUCCESS = 'upload_slip_success'
+
+export const FETCH_BOOKINGS_SUCCESS = 'fetch_bookings_success'
