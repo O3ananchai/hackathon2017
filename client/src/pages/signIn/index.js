@@ -1,9 +1,14 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import Card from '../../components/Card'
 
 class SignIn extends PureComponent {
   render() {
+    if (this.props.auth) {
+      return <Redirect to="/search-room" />
+    }
     return (
       <div className="container-fluid">
         <Card title="สมัครสมาชิก/เข้าสู่ระบบ">
@@ -29,4 +34,6 @@ class SignIn extends PureComponent {
   }
 }
 
-export default SignIn
+const mapStateToProps = ({ auth }) => ({ auth })
+
+export default connect(mapStateToProps)(SignIn)
