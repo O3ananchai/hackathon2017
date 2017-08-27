@@ -12,3 +12,9 @@ export const openReport = async reportName => {
   const url = window.URL.createObjectURL(blob)
   window.open(url)
 }
+
+export const numberWithCommas = x => {
+  const parts = x.toString().split('.')
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return parts.join('.')
+}
