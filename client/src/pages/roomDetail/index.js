@@ -14,7 +14,7 @@ class RoomDetail extends PureComponent {
   }
 
   render() {
-    const { room, bookRoom } = this.props
+    const { room, addBooking } = this.props
     if (!room) {
       return null
     }
@@ -34,7 +34,7 @@ class RoomDetail extends PureComponent {
             <ImageSlider />
             <div className="form-group">
               <div className="col-sm-offset-2 col-som-10">
-                <Button onClick={() => bookRoom(room)} bsStyle="primary">
+                <Button onClick={() => addBooking(room)} bsStyle="primary">
                   จอง
                 </Button>
                 <Link className="btn btn-info" to="/search-room">

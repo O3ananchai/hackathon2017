@@ -13,7 +13,7 @@ export const fetchRoom = roomId => async dispatch => {
   }
 }
 
-export const bookRoom = room => async (dispatch, getState) => {
+export const addBooking = room => async (dispatch, getState) => {
   const { auth } = getState()
   if (!auth) {
     return dispatch(push('/sign-in'))
