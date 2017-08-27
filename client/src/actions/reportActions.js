@@ -12,9 +12,9 @@ export const fetchOwners = () => async dispatch => {
   }
 }
 
-export const fetchBookings = ownerId => async dispatch => {
+export const fetchBookings = owner => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/bookings?ownerId=${ownerId}`)
+    const { data } = await axios.get(`/api/bookings?ownerId=${owner.value}`)
     dispatch({ type: FETCH_BOOKINGS_SUCCESS, payload: data })
     dispatch(
       success({
