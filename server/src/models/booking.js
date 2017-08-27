@@ -7,6 +7,10 @@ const bookingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Customer'
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'Owner'
+  },
   room: {
     _id: Schema.Types.ObjectId,
     address: String,
@@ -16,7 +20,8 @@ const bookingSchema = new Schema({
     pledge: Number
   },
   startDate: Date,
-  endDate: Date
+  endDate: Date,
+  slip: { data: Buffer, contentType: String }
 })
 
 mongoose.model('Booking', bookingSchema)
