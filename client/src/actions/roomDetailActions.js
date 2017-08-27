@@ -2,7 +2,7 @@ import { error, success } from 'react-notification-system-redux'
 import { push } from 'connected-react-router'
 import axios from 'axios'
 
-import { FETCH_ROOM_DETAIL_SUCCESS } from './types'
+import { FETCH_ROOM_DETAIL_SUCCESS, ADD_BOOKING_SUCCESS } from './types'
 
 export const fetchRoom = roomId => async dispatch => {
   try {
@@ -20,6 +20,7 @@ export const addBooking = room => async (dispatch, getState) => {
   }
   try {
     await axios.post('/api/bookings', room)
+    dispatch({ type: ADD_BOOKING_SUCCESS, payload: room._id })
     dispatch(
       success({
         title: 'แจ้งเตือน',
