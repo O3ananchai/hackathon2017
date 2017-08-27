@@ -19,8 +19,13 @@ export const addBooking = room => async (dispatch, getState) => {
     return dispatch(push('/sign-in'))
   }
   try {
-    await axios.post('/bookings', room)
-    dispatch(success({ title: 'แจ้งเตือน', message: 'จองห้องพักสำเร็จแล้ว!' }))
+    await axios.post('/api/bookings', room)
+    dispatch(
+      success({
+        title: 'แจ้งเตือน',
+        message: `จองห้องพักที่ ${room.address} สำเร็จแล้ว!`
+      })
+    )
     dispatch(push('/search-room'))
   } catch (e) {
     dispatch(error({ title: 'แจ้งเตือน', message: e.message }))
