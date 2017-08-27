@@ -4,6 +4,7 @@ import FilterOwner from './FilterOwner'
 import Card from '../../components/Card'
 import Table from './Table'
 import PrintButton from './PrintButton'
+import SlipModal from './SlipModal'
 
 class Report extends PureComponent {
   render() {
@@ -24,6 +25,7 @@ class Report extends PureComponent {
             </div>
           </div>
         </Card>
+        <SlipModal />
       </div>
     )
   }
