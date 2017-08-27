@@ -4,7 +4,9 @@ import axios from 'axios'
 import {
   FETCH_BOOKINGS_SUCCESS,
   FETCH_OWNERS_SUCCESS,
-  FETCH_BOOKING_SUCCESS
+  FETCH_BOOKING_SUCCESS,
+  OPEN_SLIP_MODAL,
+  CLOSE_SLIP_MODAL
 } from './types'
 
 export const fetchOwners = () => async dispatch => {
@@ -39,3 +41,5 @@ export const fetchBooking = bookingId => async dispatch => {
     dispatch(error({ title: 'แจ้งเตือน', message: e.message }))
   }
 }
+
+export const closeSlipModal = () => ({ type: CLOSE_SLIP_MODAL })

@@ -13,3 +13,5 @@ export const UPLOAD_SLIP_SUCCESS = 'upload_slip_success'
 export const FETCH_BOOKINGS_SUCCESS = 'fetch_bookings_success'
 export const FETCH_BOOKING_SUCCESS = 'fetch_booking_success'
 export const FETCH_OWNERS_SUCCESS = 'fetch_owners_success'
+
+export const CLOSE_SLIP_MODAL = 'close_slip_modal'
