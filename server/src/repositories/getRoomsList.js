@@ -5,5 +5,6 @@ module.exports = (startPrice, endPrice) => {
     endPrice !== '0'
       ? { price: { $gte: startPrice, $lte: endPrice } }
       : { price: { $gte: startPrice } }
+  find.status = 0
   return Room.find(find, {}, { sort: { price: 1 } }).populate('owner')
 }
