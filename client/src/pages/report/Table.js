@@ -6,6 +6,7 @@ import flat from 'flat'
 import moment from 'moment'
 
 import { numberWithCommas } from '../../helpers'
+import * as actions from '../../actions'
 
 class Table extends PureComponent {
   renderPrice = (cell, row) => {
@@ -28,13 +29,18 @@ class Table extends PureComponent {
   }
 
   renderSlip = (cell, row) => {
-    if (!row.slip) {
-      return <div>ไม่พบหลักฐานการชำระเงิน</div>
+    if (!row.slipDate) {
+      return null
     }
-    if (row.slip.substring(5, 10) === 'image') {
-      return <img src={row.slip} alt="slip" />
-    }
-    return <div>รูปแบบไฟล์ไม่ถูกต้อง</div>
+    return (
+      <button
+        className="btn btn-info btn-sm"
+        style={{ margin: 0 }}
+        onClick={() => this.props.fetchBooking(row._id)}
+      >
+        ดูหลักฐาน
+      </button>
+    )
   }
 
   render() {
@@ -73,7 +79,7 @@ class Table extends PureComponent {
         >
           วันที่ชำระเงิน
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="slip" dataFormat={this.renderSlip}>
+        <TableHeaderColumn dataAlign="center" dataFormat={this.renderSlip}>
           หลักฐานการชำระเงิน
         </TableHeaderColumn>
       </BootstrapTable>
@@ -85,4 +91,4 @@ const mapStateToProps = ({ report: { bookings } }) => ({
   bookings: map(bookings, flat)
 })
 
-export default connect(mapStateToProps)(Table)
+export default connect(mapStateToProps, actions)(Table)
