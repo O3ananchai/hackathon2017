@@ -11,8 +11,14 @@ class FilterOwner extends PureComponent {
   }
 
   render() {
-    const { owners, owner } = this.props
-    return <Select options={owners} onChange={value => ''} value={owner} />
+    const { owners, owner, fetchBookings } = this.props
+    return (
+      <Select
+        options={owners}
+        onChange={value => fetchBookings(value)}
+        value={owner}
+      />
+    )
   }
 }
 
