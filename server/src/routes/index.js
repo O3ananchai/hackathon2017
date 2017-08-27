@@ -27,6 +27,7 @@ module.exports = app => {
       failureRedirect: '/sign-in'
     })
   )
+  app.get('/api/owners', c.getOwnersList)
   app.get('/api/rooms', c.getRoomsList)
   app.get('/api/rooms/:id', c.getRoom)
   app.get('/api/bookings', c.getBookingsList)
