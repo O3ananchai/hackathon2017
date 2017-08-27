@@ -30,6 +30,7 @@ module.exports = app => {
   app.get('/api/rooms', c.getRoomsList)
   app.get('/api/rooms/:id', c.getRoom)
   app.get('/api/bookings', c.getBookingsList)
+  app.put('/api/bookings', requireAuth, c.updateBooking)
   app.post('/api/bookings', requireAuth, c.addBooking)
   app.get('/api/current-user', (req, res) => res.send(req.user))
   app.get('/api/sign-out', (req, res) => {
