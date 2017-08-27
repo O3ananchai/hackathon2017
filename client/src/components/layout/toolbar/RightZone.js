@@ -15,7 +15,7 @@ class RightZone extends PureComponent {
           </li>
           <li>
             {auth
-              ? <a href="/api/logout">
+              ? <a href="/api/sign-out">
                   <i className="material-icons">exit_to_app</i>
                 </a>
               : <Link to="/sign-in">

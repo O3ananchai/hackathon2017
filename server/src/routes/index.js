@@ -29,7 +29,7 @@ module.exports = app => {
   app.get('/api/rooms', c.getRoomsList)
   app.get('/api/rooms/:id', c.getRoom)
   app.get('/api/current-user', (req, res) => res.send(req.user))
-  app.get('/api/logout', (req, res) => {
+  app.get('/api/sign-out', (req, res) => {
     req.logout()
     return res.redirect('/')
   })
