@@ -10,7 +10,7 @@ class FileInput extends PureComponent {
     reader.onload = e => {
       this.props.onChange(e.target.result)
     }
-    reader.readAsBinaryString(file)
+    reader.readAsDataURL(file)
   }
 
   renderFileInfo() {
