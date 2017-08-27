@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/lib/Button'
 
 import Card from '../../components/Card'
 import DisplayItem from './DisplayItem'
-import ImageSlider from './ImageSlider'
+// import ImageSlider from './ImageSlider'
+import ImageSlider from './LightboxWrapper'
 import * as actions from '../../actions'
 
 class RoomDetail extends PureComponent {
