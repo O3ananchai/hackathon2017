@@ -33,7 +33,7 @@ class RoomDetail extends PureComponent {
             <DisplayItem title="โทรศัพท์" text={room.owner.phoneNumber} />
             <ImageSlider />
             <div className="form-group">
-              <div className="col-sm-offset-2 col-som-10">
+              <div className="col-sm-offset-2 col-sm-10">
                 <Button onClick={() => addBooking(room)} bsStyle="primary">
                   จอง
                 </Button>
