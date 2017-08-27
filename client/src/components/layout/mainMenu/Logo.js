@@ -4,7 +4,11 @@ class Logo extends PureComponent {
   render() {
     return (
       <div className="logo">
-        <a className="simple-text" style={{ color: '#FF0000' }}>
+        <a
+          href="/api/sign-out"
+          className="simple-text"
+          style={{ color: '#FF0000' }}
+        >
           Hackathon 2017
         </a>
       </div>
