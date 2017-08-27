@@ -3,13 +3,9 @@ import React, { PureComponent } from 'react'
 import FilterOwner from './FilterOwner'
 import Card from '../../components/Card'
 import Table from './Table'
-import { openReport } from '../../helpers'
+import PrintButton from './PrintButton'
 
 class Report extends PureComponent {
-  openReport = () => {
-    openReport(`bookings`)
-  }
-
   render() {
     return (
       <div className="container-fluid">
@@ -19,12 +15,7 @@ class Report extends PureComponent {
               <FilterOwner />
             </div>
             <div className="col-md-6 col-sm-6">
-              <button
-                className="btn btn-primary pull-right"
-                onClick={this.openReport}
-              >
-                พิมพ์รายงาน
-              </button>
+              <PrintButton />
             </div>
           </div>
           <div className="row">
