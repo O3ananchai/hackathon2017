@@ -6,8 +6,17 @@ import map from 'lodash/map'
 import flat from 'flat'
 
 import * as actions from '../../actions'
+import { numberWithCommas } from '../../helpers'
 
 class RoomDataTable extends PureComponent {
+  renderPrice = (cell, row) => {
+    return (
+      <div>
+        {numberWithCommas(row.price)}
+      </div>
+    )
+  }
+
   renderAddress = (cell, row) => {
     return (
       <Link to={`/search-room/${row._id}`}>
@@ -44,6 +53,7 @@ class RoomDataTable extends PureComponent {
           headerAlign="right"
           dataAlign="right"
           dataSort
+          dataFormat={this.renderPrice}
           dataField="price"
           width="100"
         >

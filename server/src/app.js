@@ -31,7 +31,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '50mb' }))
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'))

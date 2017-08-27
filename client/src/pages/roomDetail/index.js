@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/lib/Button'
 
 import Card from '../../components/Card'
 import DisplayItem from './DisplayItem'
-import ImageSlider from './ImageSlider'
+// import ImageSlider from './ImageSlider'
+import ImageSlider from './LightboxWrapper'
 import * as actions from '../../actions'
 
 class RoomDetail extends PureComponent {
@@ -14,7 +15,7 @@ class RoomDetail extends PureComponent {
   }
 
   render() {
-    const { room } = this.props
+    const { room, addBooking } = this.props
     if (!room) {
       return null
     }
@@ -33,8 +34,10 @@ class RoomDetail extends PureComponent {
             <DisplayItem title="โทรศัพท์" text={room.owner.phoneNumber} />
             <ImageSlider />
             <div className="form-group">
-              <div className="col-sm-offset-2 col-som-10">
-                <Button bsStyle="primary">จอง</Button>
+              <div className="col-sm-offset-2 col-sm-10">
+                <Button onClick={() => addBooking(room)} bsStyle="primary">
+                  จอง
+                </Button>
                 <Link className="btn btn-info" to="/search-room">
                   กลับ
                 </Link>

@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import Select from 'react-select'
 
 import DatePicker from './DatePicker'
+import FileInput from './FileInput'
 
 class renderField extends PureComponent {
   renderInput() {
-    const { input, label, type, meta, ...rest } = this.props
+    const { input, label, type, meta, description, ...rest } = this.props
     switch (type) {
       case 'select':
         return (
@@ -18,6 +19,9 @@ class renderField extends PureComponent {
 
       case 'date':
         return <DatePicker date={input.value} onDateChange={input.onChange} />
+
+      case 'fileInput':
+        return <FileInput {...input} description={description} />
 
       default:
         return (

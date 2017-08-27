@@ -8,6 +8,7 @@ import store from './store'
 
 import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-social/bootstrap-social.css'
 import 'react-select/dist/react-select.css'
 import './resources/css/material-dashboard.css'
 import 'react-bootstrap-table/css/react-bootstrap-table.css'
