@@ -5,5 +5,5 @@ module.exports = (startPrice, endPrice) => {
     endPrice !== '0'
       ? { price: { $gte: startPrice, $lte: endPrice } }
       : { price: { $gte: startPrice } }
-  return Room.find(find).populate('owner')
+  return Room.find(find, {}, { sort: { price: 1 } }).populate('owner')
 }
