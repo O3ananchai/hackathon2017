@@ -5,7 +5,17 @@ import map from 'lodash/map'
 import flat from 'flat'
 import moment from 'moment'
 
+import { numberWithCommas } from '../../helpers'
+
 class Table extends PureComponent {
+  renderPrice = (cell, row) => {
+    return (
+      <div>
+        {numberWithCommas(row['room.price'])}
+      </div>
+    )
+  }
+
   renderSlipDate = (cell, row) => {
     if (!row.slipDate) {
       return <font color="red">ยังไม่ได้ชำระเงิน</font>
@@ -52,6 +62,7 @@ class Table extends PureComponent {
           dataAlign="right"
           dataSort
           dataField="room.price"
+          dataFormat={this.renderPrice}
         >
           ค่าเช่า
         </TableHeaderColumn>
