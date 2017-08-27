@@ -4,3 +4,5 @@ export const CLOSE_MENU = 'close_menu'
 export const FETCH_USER_SUCCESS = 'fetch_user_success'
 export const FETCH_ROOMS_SUCCESS = 'fetch_rooms_success'
 export const FETCH_ROOM_DETAIL_SUCCESS = 'fetch_room_detail_success'
+
+export const BOOK_ROOM_SUCCESS = 'book_room_success'

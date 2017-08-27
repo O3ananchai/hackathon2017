@@ -14,7 +14,7 @@ class RoomDetail extends PureComponent {
   }
 
   render() {
-    const { room, auth } = this.props
+    const { room, bookRoom } = this.props
     if (!room) {
       return null
     }
@@ -34,11 +34,9 @@ class RoomDetail extends PureComponent {
             <ImageSlider />
             <div className="form-group">
               <div className="col-sm-offset-2 col-som-10">
-                {auth
-                  ? <Button bsStyle="primary">จอง</Button>
-                  : <Link className="btn btn-primary" to="/sign-in">
-                      จอง
-                    </Link>}
+                <Button onClick={() => bookRoom(room)} bsStyle="primary">
+                  จอง
+                </Button>
                 <Link className="btn btn-info" to="/search-room">
                   กลับ
                 </Link>
@@ -51,6 +49,6 @@ class RoomDetail extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ roomDetail: { room }, auth }) => ({ room, auth })
+const mapStateToProps = ({ roomDetail: { room } }) => ({ room })
 
 export default connect(mapStateToProps, actions)(RoomDetail)
