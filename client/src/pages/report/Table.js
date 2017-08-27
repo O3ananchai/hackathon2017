@@ -20,7 +20,6 @@ class Table extends PureComponent {
     return (
       <BootstrapTable
         data={bookings}
-        height={400}
         search
         striped
         hover
