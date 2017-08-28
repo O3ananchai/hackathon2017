@@ -19,9 +19,14 @@ class RoomDataTable extends PureComponent {
 
   renderAddress = (cell, row) => {
     return (
-      <Link to={`/search-room/${row._id}`}>
-        {row.address}
-      </Link>
+      <div>
+        <Link to={`/search-room/${row._id}`}>
+          {row['owner.name']}
+        </Link>
+        <div>
+          {row.address}
+        </div>
+      </div>
     )
   }
 
@@ -31,7 +36,6 @@ class RoomDataTable extends PureComponent {
       <BootstrapTable
         data={Object.values(rooms)}
         height={400}
-        search
         striped
         hover
         condensed
@@ -40,11 +44,14 @@ class RoomDataTable extends PureComponent {
         <TableHeaderColumn hidden dataField="_id" isKey>
           Room ID
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="owner.name">
+        <TableHeaderColumn hidden dataField="owner.name">
           ชื่อเจ้าของ
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="address" dataFormat={this.renderAddress}>
+        <TableHeaderColumn hidden dataField="address">
           ที่อยู่
+        </TableHeaderColumn>
+        <TableHeaderColumn dataFormat={this.renderAddress}>
+          ผลการค้นหา
         </TableHeaderColumn>
         <TableHeaderColumn dataField="owner.phoneNumber" width="200">
           หมายเลขโทรศัพท์
