@@ -16,6 +16,9 @@ services:
     image: mongo
     volumes:
       - mongo-data:/data/db
+    deploy:
+      placement:
+        constraints: [node.role == database]
 volumes:
   mongo-data:
       
