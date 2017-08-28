@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
 
+require('../../src/models/booking')
+require('../../src/models/customer')
+require('../../src/models/owner')
+require('../../src/models/room')
 const logger = require('../../src/utils/logger')
-const Owner = require('../../src/models/owner')
-const Room = require('../../src/models/room')
 const { MONGO_DB_HOST } = require('../../src/config')
 const owners = require('./ownersData')
 const rooms = require('./roomsData')
+
+const Owner = mongoose.model('Owner')
+const Room = mongoose.model('Room')
 
 mongoose.Promise = global.Promise
 
