@@ -1,7 +1,6 @@
+const Owner = require('mongoose').model('Owner')
 const faker = require('faker')
 const _ = require('lodash')
-
-const Owner = require('../../src/models/owner')
 
 const owners = []
 
