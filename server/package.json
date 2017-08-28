@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "startdocker": "node scripts/seed/index.js && node src/index.js",
     "seed": "node scripts/seed/index.js",
     "start": "node src/index.js",
     "server": "nodemon src/index.js",
@@ -26,6 +27,7 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
     "pdfmake": "^0.1.32",
+    "faker": "^4.1.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -34,7 +36,6 @@
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "faker": "^4.1.0",
     "nodemon": "^1.11.0"
   }
 }

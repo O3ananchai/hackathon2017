@@ -15,13 +15,13 @@ class SignIn extends PureComponent {
           <div className="row">
             <div className="col-md-4 col-md-offset-4">
               <a
-                href="/auth/facebook"
+                href="/api/auth/facebook"
                 className="btn btn-block btn-social btn-facebook"
               >
                 <span className="fa fa-facebook" /> Sign in with Facebook
               </a>
               <a
-                href="/auth/google"
+                href="/api/auth/google"
                 className="btn btn-block btn-social btn-google"
               >
                 <span className="fa fa-google" /> Sign in with Google

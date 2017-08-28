@@ -31,7 +31,7 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: '/auth/facebook/callback',
+      callbackURL: 'http://hackathon2017.com/api/auth/facebook/callback',
       proxy: true
     },
     authenticate
@@ -43,7 +43,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: 'http://hackathon2017.com/api/auth/google/callback'
     },
     authenticate
   )
