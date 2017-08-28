@@ -6,7 +6,7 @@ const owners = require('./ownersData')
 const rooms = []
 
 rooms.push({
-  owner: owners[_.random(owners.length - 1)]._id,
+  owner: owners[0]._id,
   address: '71/1 ซ.สุขสะอาด',
   width: _.random(3, 5),
   long: _.random(5, 8),
@@ -16,7 +16,7 @@ rooms.push({
 })
 
 rooms.push({
-  owner: owners[_.random(owners.length - 1)]._id,
+  owner: owners[1]._id,
   address: '71/1 ซ.สุขสกปรก',
   width: _.random(3, 5),
   long: _.random(5, 8),
