@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+  hackathon2017-frontend:
+    image: paiboon15721/hackathon2017-frontend
+    depends_on:
+      - hackathon2017-api
+    ports:
+      - '80:80'
+  hackathon2017-api:
+    image: paiboon15721/hackathon2017-api
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  mongo-db:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+      
