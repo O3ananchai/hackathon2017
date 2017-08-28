@@ -41,5 +41,6 @@ router.get('/sign-out', (req, res) => {
   req.logout()
   return res.redirect('/')
 })
+router.get('/seed', c.seedData)
 
 module.exports = router
