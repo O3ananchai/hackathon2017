@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const passport = require('passport')
 const c = require('../controllers')
-const requireAuth = require('../middlewares/requireAuth')
-const bookingsReport = require('../reports/bookings')
 
 router.get(
   '/auth/google',
@@ -34,17 +32,5 @@ router.get('/sign-out', (req, res) => {
   return res.redirect('/')
 })
 router.get('/seed', c.seedData)
-
-router.get('/rooms', c.getRoomsList)
-router.get('/rooms/:id', c.getRoom)
-
-router.get('/bookings', c.getBookingsList)
-router.get('/bookings/:id', c.getBooking)
-router.put('/bookings', requireAuth, c.updateBooking)
-router.post('/bookings', requireAuth, c.addBooking)
-
-router.get('/reports/bookings', bookingsReport)
-
-router.get('/owners', c.getOwnersList)
 
 module.exports = router
