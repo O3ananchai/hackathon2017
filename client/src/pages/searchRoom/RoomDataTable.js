@@ -9,9 +9,21 @@ import * as actions from '../../actions'
 import { numberWithCommas } from '../../helpers'
 
 class RoomDataTable extends PureComponent {
+  renderPhoneNumber = (cell, row) => {
+    return (
+      <div>
+        <b>Tel:</b>
+        <br />
+        {row['owner.phoneNumber']}
+      </div>
+    )
+  }
+
   renderPrice = (cell, row) => {
     return (
       <div>
+        <b className="pull-left">ราคา:</b>
+        <br />
         {numberWithCommas(row.price)}
       </div>
     )
@@ -21,7 +33,9 @@ class RoomDataTable extends PureComponent {
     return (
       <div>
         <Link to={`/search-room/${row._id}`}>
-          {row['owner.name']}
+          <b>
+            {row['owner.name']}
+          </b>
         </Link>
         <div>
           {row.address}
@@ -50,22 +64,21 @@ class RoomDataTable extends PureComponent {
         <TableHeaderColumn hidden dataField="address">
           ที่อยู่
         </TableHeaderColumn>
-        <TableHeaderColumn dataFormat={this.renderAddress}>
+        <TableHeaderColumn headerAlign="center" dataFormat={this.renderAddress}>
           ผลการค้นหา
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="owner.phoneNumber" width="200">
-          หมายเลขโทรศัพท์
-        </TableHeaderColumn>
+        <TableHeaderColumn
+          dataField="owner.phoneNumber"
+          dataFormat={this.renderPhoneNumber}
+          width="200"
+        />
         <TableHeaderColumn
           headerAlign="right"
           dataAlign="right"
-          dataSort
           dataFormat={this.renderPrice}
           dataField="price"
           width="100"
-        >
-          ราคา
-        </TableHeaderColumn>
+        />
       </BootstrapTable>
     )
   }

@@ -1,0 +1,37 @@
+version: '3.2'
+services:
+  hackathon2017-frontend:
+    image: paiboon15721/hackathon2017-frontend
+    networks:
+      - app-network
+    depends_on:
+      - hackathon2017-api
+    ports:
+      - '80:80'
+  hackathon2017-api:
+    image: paiboon15721/hackathon2017-api
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  mongo-db:
+    image: mongo
+    networks:
+      - db-network
+    volumes:
+      - mongo-data:/data/db
+    deploy:
+      placement:
+        constraints:
+          - node.labels.type == mongodb
+networks:
+  app-network:
+    driver: overlay
+  db-network:
+    driver: overlay
+volumes:
+  mongo-data:
+      
