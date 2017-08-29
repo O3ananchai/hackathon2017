@@ -8,7 +8,7 @@ pipelines:
             - docker-compose build
             - docker-compose push
             - docker logout
-            - ssh root@139.59.118.149 'bash -s' < ./deploy.sh
+            - ssh $DEPLOY_USER_AND_HOST 'bash -s' < ./deploy.sh
 
 options:
   docker: true
