@@ -18,7 +18,8 @@ services:
       - mongo-data:/data/db
     deploy:
       placement:
-        constraints: [node.role == database]
+        constraints:
+          - node.labels.type == mongodb
 volumes:
   mongo-data:
       
