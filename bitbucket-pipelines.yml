@@ -8,6 +8,7 @@ pipelines:
             - docker-compose build
             - docker-compose push
             - docker logout
+            - scp ./docker-stack.yml $DEPLOY_USER_AND_HOST:
             - ssh $DEPLOY_USER_AND_HOST 'bash -s' < ./deploy.sh
 
 options:
