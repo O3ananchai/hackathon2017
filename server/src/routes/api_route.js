@@ -28,19 +28,23 @@ router.get(
     failureRedirect: '/sign-in'
   })
 )
-router.get('/reports/bookings', bookingsReport)
-router.get('/owners', c.getOwnersList)
-router.get('/rooms', c.getRoomsList)
-router.get('/rooms/:id', c.getRoom)
-router.get('/bookings', c.getBookingsList)
-router.get('/bookings/:id', c.getBooking)
-router.put('/bookings', requireAuth, c.updateBooking)
-router.post('/bookings', requireAuth, c.addBooking)
 router.get('/current-user', (req, res) => res.send(req.user))
 router.get('/sign-out', (req, res) => {
   req.logout()
   return res.redirect('/')
 })
 router.get('/seed', c.seedData)
+
+router.get('/rooms', c.getRoomsList)
+router.get('/rooms/:id', c.getRoom)
+
+router.get('/bookings', c.getBookingsList)
+router.get('/bookings/:id', c.getBooking)
+router.put('/bookings', requireAuth, c.updateBooking)
+router.post('/bookings', requireAuth, c.addBooking)
+
+router.get('/reports/bookings', bookingsReport)
+
+router.get('/owners', c.getOwnersList)
 
 module.exports = router
