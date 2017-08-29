@@ -1,26 +1,5 @@
 version: '3.3'
 services:
-  hackathon2017-frontend:
-    build: ./client
-    image: paiboon15721/hackathon2017-frontend
-    restart: always
-    depends_on:
-      - hackathon2017-api
-    ports:
-      - '80:80'
-  hackathon2017-api:
+  hackathon2017-owners-api:
     build: ./server
-    image: paiboon15721/hackathon2017-api
-    restart: always
-    depends_on:
-      - mongo-db
-    environment:
-      - MONGO_DB_HOST=mongo-db
-  mongo-db:
-    image: mongo
-    restart: always
-    volumes:
-      - mongo-data:/data/db
-volumes:
-  mongo-data:
-      
+    image: paiboon15721/hackathon2017-owners-api
