@@ -1,0 +1,14 @@
+image: paiboon15721/node-docker-compose
+pipelines:
+  branches:
+    '{frontend,auth-api,rooms-api,owners-api,report-api,bookings-api}':
+      - step:
+          script:
+            - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            - docker-compose build
+            - docker-compose push
+            - docker logout
+            - ssh root@139.59.118.149 'bash -s' < ./deploy.sh
+
+options:
+  docker: true
