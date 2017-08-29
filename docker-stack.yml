@@ -5,11 +5,51 @@ services:
     networks:
       - app-network
     depends_on:
-      - hackathon2017-api
+      - hackathon2017-auth-api
+      - hackathon2017-rooms-api
+      - hackathon2017-bookings-api
+      - hackathon2017-reports-api
+      - hackathon2017-owners-api
     ports:
       - '80:80'
-  hackathon2017-api:
-    image: paiboon15721/hackathon2017-api
+  hackathon2017-auth-api:
+    image: paiboon15721/hackathon2017-auth-api
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  hackathon2017-rooms-api:
+    image: paiboon15721/hackathon2017-rooms-api
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  hackathon2017-bookings-api:
+    image: paiboon15721/hackathon2017-bookings-api
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  hackathon2017-reports-api:
+    image: paiboon15721/hackathon2017-reports-api
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGO_DB_HOST=mongo-db
+  hackathon2017-owners-api:
+    image: paiboon15721/hackathon2017-owners-api
     networks:
       - app-network
       - db-network
