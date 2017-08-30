@@ -44,7 +44,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 2
+      replicas: 0
   hackathon2017-reports-api:
     image: paiboon15721/hackathon2017-reports-api
     networks:
