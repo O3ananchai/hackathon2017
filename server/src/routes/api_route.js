@@ -32,5 +32,6 @@ router.get('/sign-out', (req, res) => {
   return res.redirect('/')
 })
 router.get('/seed', c.seedData)
+router.get('/version', (req, res) => res.send({ version: '1' }))
 
 module.exports = router
