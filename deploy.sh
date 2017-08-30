@@ -1,5 +1,5 @@
 #!/bin/bash
 
 date > last-deploy
-docker stack deploy -c ./docker-stack.yml hackathon
+docker service update --image paiboon15721/hackathon2017-auth-api hackathon_hackathon2017-auth-api
 echo "Deploy successful!"
