@@ -1,7 +1,7 @@
 image: paiboon15721/node-docker-compose
 pipelines:
   branches:
-    branch-name:
+    rooms-api:
       - step:
           script:
             - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
