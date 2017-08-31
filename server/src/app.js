@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
+const logger = require('./utils/logger')
 
 require('./models/booking')
 require('./models/customer')
@@ -36,9 +37,14 @@ app.use(bodyParser.json({ limit: '50mb' }))
 if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'))
   app.use(detailLogger)
-  mongoose.connect(`mongodb://${MONGO_DB_HOST}/hackathon`, {
-    useMongoClient: true
-  })
+  mongoose
+    .connect(`mongodb://${MONGO_DB_HOST}/hackathon`, {
+      useMongoClient: true
+    })
+    .catch(err => {
+      logger.error('App starting error:', err.stack)
+      process.exit(1)
+    })
 }
 
 router(app)
