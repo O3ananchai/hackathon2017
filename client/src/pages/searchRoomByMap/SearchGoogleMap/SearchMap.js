@@ -57,7 +57,7 @@ class SearchMap extends PureComponent {
         ))}
         <Circle
           center={current}
-          radius={1000}
+          radius={20}
           options={{
             fillColor: `red`,
             fillOpacity: 0.2,
