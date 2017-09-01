@@ -81,7 +81,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [13.826959, 100.3107]
+      coordinates: [100.3107, 13.826959]
     }
   },
   {
@@ -94,7 +94,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [13.822147, 100.310259]
+      coordinates: [100.310259, 13.822147]
     }
   },
   {
@@ -107,7 +107,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [13.822741, 100.310592]
+      coordinates: [100.310592, 13.822741]
     }
   },
   {
@@ -120,7 +120,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [13.821626, 100.309712]
+      coordinates: [100.309712, 13.821626]
     }
   },
   {
@@ -133,7 +133,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [13.821731, 100.309071]
+      coordinates: [100.309071, 13.821731]
     }
   }
 ]
