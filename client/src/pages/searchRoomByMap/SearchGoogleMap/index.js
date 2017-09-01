@@ -9,24 +9,20 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
-  handleMapMounted = map => {
-    this._map = map
-  }
-
-  handleBoundsChanged = () => {
+  handleMapClick = val => {
+    const markers = [
+      {
+        position: val.latLng,
+        defaultAnimation: 2
+      }
+    ]
     this.setState({
-      bounds: this._map.getBounds(),
-      center: this._map.getCenter()
+      markers
     })
-  }
-
-  handleSearchBoxMounted = searchBox => {
-    this._searchBox = searchBox
   }
 
   handlePlacesChanged = () => {
     const places = this._searchBox.getPlaces()
-    console.log(places[0].geometry.location)
 
     // Add a marker for each place returned from search bar
     const markers = places.map(place => ({
@@ -44,12 +40,28 @@ class SearchGoogleMap extends Component {
     })
   }
 
+  handleMapMounted = map => {
+    this._map = map
+  }
+
+  handleBoundsChanged = () => {
+    this.setState({
+      bounds: this._map.getBounds(),
+      center: this._map.getCenter()
+    })
+  }
+
+  handleSearchBoxMounted = searchBox => {
+    this._searchBox = searchBox
+  }
+
   render() {
     return (
       <SearchMap
         containerElement={<div style={{ height: 1000 }} />}
         mapElement={<div style={{ height: 1000 }} />}
         center={this.state.center}
+        onMapClick={this.handleMapClick}
         onMapMounted={this.handleMapMounted}
         onBoundsChanged={this.handleBoundsChanged}
         onSearchBoxMounted={this.handleSearchBoxMounted}
