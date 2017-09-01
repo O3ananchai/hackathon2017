@@ -6,18 +6,13 @@ class SearchGoogleMap extends Component {
   state = {
     bounds: null,
     center: { lat: 13.703, lng: 100.543 },
+    current: { lat: 13.703, lng: 100.543 },
     markers: []
   }
 
   handleMapClick = val => {
-    const markers = [
-      {
-        position: val.latLng,
-        defaultAnimation: 2
-      }
-    ]
     this.setState({
-      markers
+      current: { lat: val.latLng.lat(), lng: val.latLng.lng() }
     })
   }
 
@@ -25,18 +20,19 @@ class SearchGoogleMap extends Component {
     const places = this._searchBox.getPlaces()
 
     // Add a marker for each place returned from search bar
-    const markers = places.map(place => ({
-      position: place.geometry.location,
-      defaultAnimation: 2
-    }))
+    // const markers = places.map(place => ({
+    //   position: place.geometry.location,
+    //   defaultAnimation: 2
+    // }))
+    const current = places[0].geometry.location
 
     // Set markers; set map center to first search result
     const mapCenter =
-      markers.length > 0 ? markers[0].position : this.state.center
+      places.length > 0 ? places[0].geometry.location : this.state.center
 
     this.setState({
       center: mapCenter,
-      markers
+      current
     })
   }
 
@@ -61,6 +57,7 @@ class SearchGoogleMap extends Component {
         containerElement={<div style={{ height: 1000 }} />}
         mapElement={<div style={{ height: 1000 }} />}
         center={this.state.center}
+        current={this.state.current}
         onMapClick={this.handleMapClick}
         onMapMounted={this.handleMapMounted}
         onBoundsChanged={this.handleBoundsChanged}

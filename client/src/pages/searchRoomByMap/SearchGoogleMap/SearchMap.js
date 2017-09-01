@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker, Circle } from 'react-google-maps'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 import INPUT_STYLE from './inputStyle'
 const google = window.google
@@ -14,7 +14,8 @@ class SearchMap extends PureComponent {
       bounds,
       onPlacesChanged,
       onMapClick,
-      markers
+      markers,
+      current
     } = this.props
 
     return (
@@ -36,6 +37,17 @@ class SearchMap extends PureComponent {
         {markers.map((marker, index) => (
           <Marker position={marker.position} key={index} />
         ))}
+        <Circle
+          center={current}
+          radius={1000}
+          options={{
+            fillColor: `red`,
+            fillOpacity: 0.2,
+            strokeColor: `red`,
+            strokeOpacity: 1,
+            strokeWeight: 1
+          }}
+        />
       </GoogleMap>
     )
   }
