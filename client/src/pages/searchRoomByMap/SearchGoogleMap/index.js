@@ -62,12 +62,6 @@ class SearchGoogleMap extends Component {
 
   handlePlacesChanged = async () => {
     const places = this._searchBox.getPlaces()
-
-    // Add a marker for each place returned from search bar
-    // const markers = places.map(place => ({
-    //   position: place.geometry.location,
-    //   defaultAnimation: 2
-    // }))
     const current = places[0].geometry.location
     const { data } = await axios.get(
       `/api/rooms?lng=${current.lng()}&lat=${current.lat()}`
