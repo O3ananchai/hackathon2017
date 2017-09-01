@@ -29,7 +29,7 @@ class SearchMap extends PureComponent {
     return (
       <GoogleMap
         ref={onMapMounted}
-        defaultZoom={15}
+        defaultZoom={17}
         onClick={onMapClick}
         center={center}
         onBoundsChanged={onBoundsChanged}
