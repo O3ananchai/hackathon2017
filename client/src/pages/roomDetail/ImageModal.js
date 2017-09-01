@@ -4,14 +4,17 @@ import Button from 'react-bootstrap/lib/Button'
 
 class ImageModal extends PureComponent {
   render() {
-    const { showModal, closeImageModal, imageUrl } = this.props
+    const { showImageModal, closeImageModal, imageId } = this.props
     return (
-      <Modal show={showModal} onHide={closeImageModal} bsSize="lg">
+      <Modal show={showImageModal} onHide={closeImageModal} bsSize="lg">
         <Modal.Header closeButton>
           <Modal.Title>รูปตัวอย่างห้อง</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <img src={imageUrl} alt="room" />
+          <img
+            src={`https://images.unsplash.com/photo-${imageId}?w=800&h=600`}
+            alt="room"
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={closeImageModal}>Close</Button>
