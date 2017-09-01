@@ -55,7 +55,7 @@ const rooms = [
     status: 0,
     geomtry: {
       type: 'Point',
-      coordinates: [100.54342, 13.703029]
+      coordinates: [100.309508, 13.824114]
     }
   },
   {
