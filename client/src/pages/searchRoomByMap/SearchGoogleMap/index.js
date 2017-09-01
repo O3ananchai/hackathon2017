@@ -11,18 +11,44 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
-  handleMarkerClick = val => {
-    console.log(val)
+  handleMarkerClick = targetMarker => {
+    this.setState({
+      markers: this.state.markers.map(marker => {
+        if (marker === targetMarker) {
+          return {
+            ...marker,
+            showInfo: true
+          }
+        }
+        return marker
+      })
+    })
   }
 
   handleMapClick = val => {
     const current = { lat: val.latLng.lat(), lng: val.latLng.lng() }
     const markers = mockRooms.map(room => ({
+      showInfo: false,
+      room,
       position: room.loc
     }))
     this.setState({
       markers,
       current
+    })
+  }
+
+  handleMarkerClose = targetMarker => {
+    this.setState({
+      markers: this.state.markers.map(marker => {
+        if (marker === targetMarker) {
+          return {
+            ...marker,
+            showInfo: false
+          }
+        }
+        return marker
+      })
     })
   }
 
@@ -73,6 +99,7 @@ class SearchGoogleMap extends Component {
         onBoundsChanged={this.handleBoundsChanged}
         onSearchBoxMounted={this.handleSearchBoxMounted}
         onMarkerClick={this.handleMarkerClick}
+        onMarkerClose={this.handleMarkerClose}
         bounds={this.state.bounds}
         onPlacesChanged={this.handlePlacesChanged}
         markers={this.state.markers}
