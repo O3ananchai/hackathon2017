@@ -1,12 +1,8 @@
 import React, { PureComponent } from 'react'
-import {
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  Circle,
-  InfoWindow
-} from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker, Circle } from 'react-google-maps'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
+
+import PopUp from './PopUp'
 import INPUT_STYLE from './inputStyle'
 const google = window.google
 
@@ -49,9 +45,7 @@ class SearchMap extends PureComponent {
             key={index}
           >
             {marker.showInfo && (
-              <InfoWindow onCloseClick={() => onMarkerClose(marker)}>
-                <div>{marker.room.address}</div>
-              </InfoWindow>
+              <PopUp marker={marker} onMarkerClose={onMarkerClose} />
             )}
           </Marker>
         ))}
