@@ -6,8 +6,6 @@ class ImageSlider extends PureComponent {
     const settings = {
       focusOnSelect: true,
       className: 'center',
-      centerMode: true,
-      infinite: true,
       speed: 500,
       slidesToShow: 3,
       centerPadding: '60px'
