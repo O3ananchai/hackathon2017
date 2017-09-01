@@ -29,7 +29,7 @@ const rooms = [
     status: 0,
     geomtery: {
       type: 'Point',
-      coordinates: [13.686542, 100.48718]
+      coordinates: [100.48718, 13.686542]
     }
   },
   {
