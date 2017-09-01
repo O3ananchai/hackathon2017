@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import SearchMap from './SearchMap'
-import mockRooms from './mockRooms'
 
 class SearchGoogleMap extends Component {
   state = {
     bounds: null,
-    center: { lat: 13.703, lng: 100.543 },
-    current: { lat: 13.703, lng: 100.543 },
+    center: { lat: 13.8232971, lng: 100.3040178 },
+    current: { lat: 13.8232971, lng: 100.3040178 },
     markers: []
   }
 
@@ -25,13 +25,21 @@ class SearchGoogleMap extends Component {
     })
   }
 
-  handleMapClick = val => {
+  handleMapClick = async val => {
     const current = { lat: val.latLng.lat(), lng: val.latLng.lng() }
-    const markers = mockRooms.map(room => ({
-      showInfo: false,
-      room,
-      position: room.loc
-    }))
+    const { data } = await axios.get(
+      `/api/rooms?lng=${current.lng}&lat=${current.lat}`
+    )
+    const markers = data.map(room => {
+      return {
+        showInfo: false,
+        room,
+        position: {
+          lat: room.obj.geomtry.coordinates[1],
+          lng: room.obj.geomtry.coordinates[0]
+        }
+      }
+    })
     this.setState({
       markers,
       current
@@ -52,7 +60,7 @@ class SearchGoogleMap extends Component {
     })
   }
 
-  handlePlacesChanged = () => {
+  handlePlacesChanged = async () => {
     const places = this._searchBox.getPlaces()
 
     // Add a marker for each place returned from search bar
@@ -61,6 +69,19 @@ class SearchGoogleMap extends Component {
     //   defaultAnimation: 2
     // }))
     const current = places[0].geometry.location
+    const { data } = await axios.get(
+      `/api/rooms?lng=${current.lng()}&lat=${current.lat()}`
+    )
+    const markers = data.map(room => {
+      return {
+        showInfo: false,
+        room,
+        position: {
+          lat: room.obj.geomtry.coordinates[1],
+          lng: room.obj.geomtry.coordinates[0]
+        }
+      }
+    })
 
     // Set markers; set map center to first search result
     const mapCenter =
@@ -68,7 +89,8 @@ class SearchGoogleMap extends Component {
 
     this.setState({
       center: mapCenter,
-      current
+      current,
+      markers
     })
   }
 
@@ -90,8 +112,8 @@ class SearchGoogleMap extends Component {
   render() {
     return (
       <SearchMap
-        containerElement={<div style={{ height: 1000 }} />}
-        mapElement={<div style={{ height: 1000 }} />}
+        containerElement={<div style={{ height: 700 }} />}
+        mapElement={<div style={{ height: 700 }} />}
         center={this.state.center}
         current={this.state.current}
         onMapClick={this.handleMapClick}
