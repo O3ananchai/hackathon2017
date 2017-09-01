@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import Card from '../../components/Card'
-import Button from 'react-bootstrap/lib/Button'
 import RoomDataTable from './RoomDataTable'
 import PriceSearchForm from './PriceSearchForm'
 import * as actions from '../../actions'
@@ -18,9 +18,13 @@ class SearchRoom extends PureComponent {
         <Card title="ค้นหาห้องพัก">
           <div className="row" style={{ height: 110 }}>
             <PriceSearchForm onSubmit={this.onSubmit} />
-            <Button style={{ marginTop: 23 }} bsStyle="info" type="submit">
+            <Link
+              to="/search-room/map"
+              className="btn btn-info"
+              style={{ marginTop: 23 }}
+            >
               ค้นหาด้วยแผนที่
-            </Button>
+            </Link>
           </div>
           <div className="row">
             <div className="col-md-12">
