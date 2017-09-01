@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const PointSchema = new Schema({
-  type: { type: String, default: 'Point' },
-  coordinates: { type: [Number], index: '2dsphere' }
+  coordinates: { type: [Number], index: '2dsphere' },
+  type: { type: String, default: 'Point' }
 })
 
 const roomSchema = new Schema({
@@ -13,7 +13,7 @@ const roomSchema = new Schema({
     ref: 'Owner'
   },
   address: String,
-  geometry: PointSchema,
+  geomtry: PointSchema,
   width: { type: Number, default: 0 },
   long: { type: Number, default: 0 },
   price: { type: Number, default: 0 },

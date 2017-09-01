@@ -13,7 +13,7 @@ const rooms = [
     price: 3000,
     pledge: 3,
     status: 0,
-    geomtery: {
+    geomtry: {
       type: 'Point',
       coordinates: [100.54342, 13.703029]
     }
@@ -27,7 +27,7 @@ const rooms = [
     price: 4500,
     pledge: 3,
     status: 0,
-    geomtery: {
+    geomtry: {
       type: 'Point',
       coordinates: [100.48718, 13.686542]
     }
@@ -40,7 +40,7 @@ const rooms = [
     price: 2500,
     pledge: 2,
     status: 0,
-    geomtery: {
+    geomtry: {
       type: 'Point',
       coordinates: [100.308942, 13.821888]
     }
@@ -53,7 +53,7 @@ const rooms = [
     price: 3200,
     pledge: 3,
     status: 0,
-    geomtery: {
+    geomtry: {
       type: 'Point',
       coordinates: [100.54342, 13.703029]
     }
@@ -66,7 +66,7 @@ const rooms = [
     price: 3000,
     pledge: 3,
     status: 0,
-    geomtery: {
+    geomtry: {
       type: 'Point',
       coordinates: [100.308971, 13.817619]
     }
