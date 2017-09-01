@@ -12,6 +12,7 @@ class SearchMap extends PureComponent {
       onBoundsChanged,
       onSearchBoxMounted,
       bounds,
+      onMarkerClick,
       onPlacesChanged,
       onMapClick,
       markers,
@@ -35,7 +36,11 @@ class SearchMap extends PureComponent {
           inputStyle={INPUT_STYLE}
         />
         {markers.map((marker, index) => (
-          <Marker position={marker.position} key={index} />
+          <Marker
+            position={marker.position}
+            onClick={onMarkerClick}
+            key={index}
+          />
         ))}
         <Circle
           center={current}
