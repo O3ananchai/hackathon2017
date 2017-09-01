@@ -9,27 +9,22 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
-  handleMapMounted = this.handleMapMounted.bind(this)
-  handleBoundsChanged = this.handleBoundsChanged.bind(this)
-  handleSearchBoxMounted = this.handleSearchBoxMounted.bind(this)
-  handlePlacesChanged = this.handlePlacesChanged.bind(this)
-
-  handleMapMounted(map) {
+  handleMapMounted = map => {
     this._map = map
   }
 
-  handleBoundsChanged() {
+  handleBoundsChanged = () => {
     this.setState({
       bounds: this._map.getBounds(),
       center: this._map.getCenter()
     })
   }
 
-  handleSearchBoxMounted(searchBox) {
+  handleSearchBoxMounted = searchBox => {
     this._searchBox = searchBox
   }
 
-  handlePlacesChanged() {
+  handlePlacesChanged = () => {
     const places = this._searchBox.getPlaces()
     console.log(places[0].geometry.location)
 
