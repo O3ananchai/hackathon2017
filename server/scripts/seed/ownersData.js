@@ -10,6 +10,18 @@ const owners = [
   {
     name: 'บ้าน CDG',
     phoneNumber: faker.phone.phoneNumberFormat()
+  },
+  {
+    name: 'คุณสุเทพ',
+    phoneNumber: faker.phone.phoneNumberFormat()
+  },
+  {
+    name: 'คุณสมหญิง',
+    phoneNumber: faker.phone.phoneNumberFormat()
+  },
+  {
+    name: 'ลุงใหญ่',
+    phoneNumber: faker.phone.phoneNumberFormat()
   }
 ]
 
