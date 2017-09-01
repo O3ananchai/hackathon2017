@@ -1,5 +1,11 @@
 import React, { PureComponent } from 'react'
-import { withGoogleMap, GoogleMap, Marker, Circle } from 'react-google-maps'
+import {
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  Circle,
+  InfoWindow
+} from 'react-google-maps'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 import INPUT_STYLE from './inputStyle'
 const google = window.google
@@ -13,6 +19,7 @@ class SearchMap extends PureComponent {
       onSearchBoxMounted,
       bounds,
       onMarkerClick,
+      onMarkerClose,
       onPlacesChanged,
       onMapClick,
       markers,
@@ -38,9 +45,15 @@ class SearchMap extends PureComponent {
         {markers.map((marker, index) => (
           <Marker
             position={marker.position}
-            onClick={onMarkerClick}
+            onClick={() => onMarkerClick(marker)}
             key={index}
-          />
+          >
+            {marker.showInfo && (
+              <InfoWindow onCloseClick={() => onMarkerClose(marker)}>
+                <div>{marker.room.address}</div>
+              </InfoWindow>
+            )}
+          </Marker>
         ))}
         <Circle
           center={current}
