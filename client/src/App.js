@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute'
 import NoMatch from './components/NoMatch'
 import Layout from './components/layout'
 import SearchRoom from './pages/searchRoom'
+import SearchRoomByMap from './pages/searchRoomByMap'
 import RoomDetail from './pages/roomDetail'
 import UploadSlip from './pages/uploadSlip'
 import SignIn from './pages/signIn'
@@ -31,6 +32,7 @@ class App extends PureComponent {
             />
             <Route path="/sign-in" component={SignIn} />
             <Route exact path="/search-room" component={SearchRoom} />
+            <Route path="/search-room/map" component={SearchRoomByMap} />
             <Route path="/search-room/:id" component={RoomDetail} />
             <PrivateRoute path="/upload-slip" component={UploadSlip} />
             <Route path="/report" component={Report} />
