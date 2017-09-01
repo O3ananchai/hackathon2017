@@ -8,6 +8,10 @@ const roomSchema = new Schema({
     ref: 'Owner'
   },
   address: String,
+  loc: {
+    type: [Number],
+    index: '2d'
+  },
   width: { type: Number, default: 0 },
   long: { type: Number, default: 0 },
   price: { type: Number, default: 0 },
