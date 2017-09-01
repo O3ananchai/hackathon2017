@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import SearchMap from './SearchMap'
+import mockRooms from './mockRooms'
 
 class SearchGoogleMap extends Component {
   state = {
@@ -10,9 +11,18 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
+  handleMarkerClick = val => {
+    console.log(val)
+  }
+
   handleMapClick = val => {
+    const current = { lat: val.latLng.lat(), lng: val.latLng.lng() }
+    const markers = mockRooms.map(room => ({
+      position: room.loc
+    }))
     this.setState({
-      current: { lat: val.latLng.lat(), lng: val.latLng.lng() }
+      markers,
+      current
     })
   }
 
@@ -62,6 +72,7 @@ class SearchGoogleMap extends Component {
         onMapMounted={this.handleMapMounted}
         onBoundsChanged={this.handleBoundsChanged}
         onSearchBoxMounted={this.handleSearchBoxMounted}
+        onMarkerClick={this.handleMarkerClick}
         bounds={this.state.bounds}
         onPlacesChanged={this.handlePlacesChanged}
         markers={this.state.markers}
