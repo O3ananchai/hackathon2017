@@ -1,0 +1,14 @@
+image: paiboon15721/node-docker-compose
+pipelines:
+  branches:
+    owners-api:
+      - step:
+          script:
+            - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            - docker-compose build
+            - docker-compose push
+            - docker logout
+            - ssh $DEPLOY_USER_AND_HOST 'bash -s' < ./deploy.sh
+
+options:
+  docker: true
