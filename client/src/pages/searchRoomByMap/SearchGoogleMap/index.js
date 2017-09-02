@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import canUseDOM from 'can-use-dom'
-import raf from 'raf'
 
 import SearchMap from './SearchMap'
 
