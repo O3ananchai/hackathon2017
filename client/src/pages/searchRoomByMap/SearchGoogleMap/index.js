@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import canUseDOM from 'can-use-dom'
 
 import SearchMap from './SearchMap'
+
+const geolocation =
+  canUseDOM && navigator.geolocation
+    ? navigator.geolocation
+    : {
+        getCurrentPosition(success, failure) {
+          failure(`Your browser doesn't support geolocation.`)
+        }
+      }
 
 class SearchGoogleMap extends Component {
   state = {
@@ -9,6 +19,39 @@ class SearchGoogleMap extends Component {
     center: { lat: 13.8232971, lng: 100.3040178 },
     current: { lat: 13.8232971, lng: 100.3040178 },
     markers: []
+  }
+
+  getMarkers = async (lng, lat) => {
+    const { data } = await axios.get(`/api/rooms?lng=${lng}&lat=${lat}`)
+    return data.map(room => ({
+      showInfo: false,
+      room,
+      position: {
+        lat: room.obj.geomtry.coordinates[1],
+        lng: room.obj.geomtry.coordinates[0]
+      }
+    }))
+  }
+
+  componentDidMount = async () => {
+    geolocation.getCurrentPosition(
+      async position => {
+        const { latitude, longitude } = position.coords
+        const markers = await this.getMarkers(longitude, latitude)
+        this.setState({
+          markers,
+          center: { lat: latitude, lng: longitude },
+          current: { lat: latitude, lng: longitude }
+        })
+      },
+      async () => {
+        const { current } = this.state
+        const markers = await this.getMarkers(current.lng, current.lat)
+        this.setState({
+          markers
+        })
+      }
+    )
   }
 
   handleMarkerClick = targetMarker => {
@@ -27,19 +70,7 @@ class SearchGoogleMap extends Component {
 
   handleMapClick = async val => {
     const current = { lat: val.latLng.lat(), lng: val.latLng.lng() }
-    const { data } = await axios.get(
-      `/api/rooms?lng=${current.lng}&lat=${current.lat}`
-    )
-    const markers = data.map(room => {
-      return {
-        showInfo: false,
-        room,
-        position: {
-          lat: room.obj.geomtry.coordinates[1],
-          lng: room.obj.geomtry.coordinates[0]
-        }
-      }
-    })
+    const markers = await this.getMarkers(current.lng, current.lat)
     this.setState({
       markers,
       current
@@ -63,21 +94,7 @@ class SearchGoogleMap extends Component {
   handlePlacesChanged = async () => {
     const places = this._searchBox.getPlaces()
     const current = places[0].geometry.location
-    const { data } = await axios.get(
-      `/api/rooms?lng=${current.lng()}&lat=${current.lat()}`
-    )
-    const markers = data.map(room => {
-      return {
-        showInfo: false,
-        room,
-        position: {
-          lat: room.obj.geomtry.coordinates[1],
-          lng: room.obj.geomtry.coordinates[0]
-        }
-      }
-    })
-
-    // Set markers; set map center to first search result
+    const markers = await this.getMarkers(current.lng(), current.lat())
     const mapCenter =
       places.length > 0 ? places[0].geometry.location : this.state.center
 
