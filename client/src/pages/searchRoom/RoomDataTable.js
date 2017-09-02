@@ -33,13 +33,9 @@ class RoomDataTable extends PureComponent {
     return (
       <div>
         <Link to={`/search-room/${row._id}`}>
-          <b>
-            {row['owner.name']}
-          </b>
+          <b>{row['owner.name']}</b>
         </Link>
-        <div>
-          {row.address}
-        </div>
+        <div>{row.address}</div>
       </div>
     )
   }
@@ -64,20 +60,22 @@ class RoomDataTable extends PureComponent {
         <TableHeaderColumn hidden dataField="address">
           ที่อยู่
         </TableHeaderColumn>
-        <TableHeaderColumn headerAlign="center" dataFormat={this.renderAddress}>
+        <TableHeaderColumn
+          width="500"
+          headerAlign="center"
+          dataFormat={this.renderAddress}
+        >
           ผลการค้นหา
         </TableHeaderColumn>
         <TableHeaderColumn
           dataField="owner.phoneNumber"
           dataFormat={this.renderPhoneNumber}
-          width="200"
         />
         <TableHeaderColumn
           headerAlign="right"
           dataAlign="right"
           dataFormat={this.renderPrice}
           dataField="price"
-          width="100"
         />
       </BootstrapTable>
     )
