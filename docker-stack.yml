@@ -22,7 +22,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 1
+      replicas: 2
   hackathon2017-rooms-api:
     image: paiboon15721/hackathon2017-rooms-api
     networks:
@@ -33,7 +33,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 1
+      replicas: 3
   hackathon2017-bookings-api:
     image: paiboon15721/hackathon2017-bookings-api
     networks:
@@ -44,7 +44,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 1
+      replicas: 3
   hackathon2017-reports-api:
     image: paiboon15721/hackathon2017-reports-api
     networks:
@@ -55,7 +55,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 1
+      replicas: 3
   hackathon2017-owners-api:
     image: paiboon15721/hackathon2017-owners-api
     networks:
@@ -66,7 +66,7 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
-      replicas: 1
+      replicas: 3
   mongo-db:
     image: mongo
     networks:
