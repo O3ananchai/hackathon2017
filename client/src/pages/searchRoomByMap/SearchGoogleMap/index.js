@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import canUseDOM from 'can-use-dom'
+import raf from 'raf'
 
 import SearchMap from './SearchMap'
+
+const geolocation =
+  canUseDOM && navigator.geolocation
+    ? navigator.geolocation
+    : {
+        getCurrentPosition(success, failure) {
+          failure(`Your browser doesn't support geolocation.`)
+        }
+      }
 
 class SearchGoogleMap extends Component {
   state = {
@@ -24,11 +35,24 @@ class SearchGoogleMap extends Component {
   }
 
   componentDidMount = async () => {
-    const { current } = this.state
-    const markers = await this.getMarkers(current.lng, current.lat)
-    this.setState({
-      markers
-    })
+    geolocation.getCurrentPosition(
+      async position => {
+        const { latitude, longitude } = position.coords
+        const markers = await this.getMarkers(longitude, latitude)
+        this.setState({
+          markers,
+          center: { lat: latitude, lng: longitude },
+          current: { lat: latitude, lng: longitude }
+        })
+      },
+      async () => {
+        const { current } = this.state
+        const markers = await this.getMarkers(current.lng, current.lat)
+        this.setState({
+          markers
+        })
+      }
+    )
   }
 
   handleMarkerClick = targetMarker => {
