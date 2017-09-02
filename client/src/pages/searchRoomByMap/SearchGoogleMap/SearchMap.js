@@ -1,12 +1,16 @@
-import React, { PureComponent } from 'react'
-import { withGoogleMap, GoogleMap, Marker, Circle } from 'react-google-maps'
+import React, { Component } from 'react'
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 
 import PopUp from './PopUp'
 import INPUT_STYLE from './inputStyle'
 const google = window.google
 
-class SearchMap extends PureComponent {
+class SearchMap extends Component {
+  state = {
+    showCurrentInfo: false
+  }
+
   render() {
     const {
       onMapMounted,
@@ -49,17 +53,23 @@ class SearchMap extends PureComponent {
             )}
           </Marker>
         ))}
-        <Circle
-          center={current}
-          radius={20}
-          options={{
-            fillColor: `red`,
-            fillOpacity: 0.2,
-            strokeColor: `red`,
-            strokeOpacity: 1,
-            strokeWeight: 1
+        <Marker
+          icon={{
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            strokeColor: 'blue',
+            scale: 5
           }}
-        />
+          onClick={() => this.setState({ showCurrentInfo: true })}
+          position={current}
+        >
+          {this.state.showCurrentInfo && (
+            <InfoWindow
+              onCloseClick={() => this.setState({ showCurrentInfo: false })}
+            >
+              <div>คุณอยู่นี่</div>
+            </InfoWindow>
+          )}
+        </Marker>
       </GoogleMap>
     )
   }
