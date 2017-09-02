@@ -33,7 +33,11 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
+<<<<<<< HEAD
       replicas: 3
+=======
+      replicas: 2
+>>>>>>> 160fbbcbca911c4f72d039d47ac88894590bef8f
   hackathon2017-bookings-api:
     image: paiboon15721/hackathon2017-bookings-api
     networks:
@@ -44,7 +48,11 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
+<<<<<<< HEAD
       replicas: 3
+=======
+      replicas: 2
+>>>>>>> 160fbbcbca911c4f72d039d47ac88894590bef8f
   hackathon2017-reports-api:
     image: paiboon15721/hackathon2017-reports-api
     networks:
@@ -55,7 +63,11 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
+<<<<<<< HEAD
       replicas: 3
+=======
+      replicas: 2
+>>>>>>> 160fbbcbca911c4f72d039d47ac88894590bef8f
   hackathon2017-owners-api:
     image: paiboon15721/hackathon2017-owners-api
     networks:
@@ -66,7 +78,11 @@ services:
     environment:
       - MONGO_DB_HOST=mongo-db
     deploy:
+<<<<<<< HEAD
       replicas: 3
+=======
+      replicas: 2
+>>>>>>> 160fbbcbca911c4f72d039d47ac88894590bef8f
   mongo-db:
     image: mongo
     networks:
