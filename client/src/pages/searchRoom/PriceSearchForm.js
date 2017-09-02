@@ -10,7 +10,7 @@ class PriceSearchForm extends PureComponent {
     const { handleSubmit, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <div className="col-md-3">
+        <div className="col-md-6 col-sm-6">
           <Field
             name="price"
             component={renderField}
@@ -19,7 +19,7 @@ class PriceSearchForm extends PureComponent {
             type="select"
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 col-sm-6">
           <Button
             style={{ marginTop: 23 }}
             bsStyle="primary"
