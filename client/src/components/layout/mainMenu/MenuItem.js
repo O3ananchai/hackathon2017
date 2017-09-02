@@ -5,18 +5,16 @@ import flow from 'lodash/fp/flow'
 import split from 'lodash/fp/split'
 import thru from 'lodash/fp/thru'
 
+import * as actions from '../../../actions'
+
 class MenuItem extends PureComponent {
   render() {
-    const { path, text, icon, currentPath } = this.props
+    const { path, text, icon, currentPath, closeMenu } = this.props
     return (
       <li className={path === currentPath ? 'active' : ''}>
-        <Link to={path}>
-          <i className="material-icons">
-            {icon}
-          </i>
-          <p>
-            {text}
-          </p>
+        <Link to={path} onClick={closeMenu}>
+          <i className="material-icons">{icon}</i>
+          <p>{text}</p>
         </Link>
       </li>
     )
@@ -31,4 +29,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(MenuItem)
+export default connect(mapStateToProps, actions)(MenuItem)
