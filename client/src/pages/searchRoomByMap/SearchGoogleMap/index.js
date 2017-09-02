@@ -11,6 +11,26 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
+  componentDidMount = async () => {
+    const { current } = this.state
+    const { data } = await axios.get(
+      `/api/rooms?lng=${current.lng}&lat=${current.lat}`
+    )
+    const markers = data.map(room => {
+      return {
+        showInfo: false,
+        room,
+        position: {
+          lat: room.obj.geomtry.coordinates[1],
+          lng: room.obj.geomtry.coordinates[0]
+        }
+      }
+    })
+    this.setState({
+      markers
+    })
+  }
+
   handleMarkerClick = targetMarker => {
     this.setState({
       markers: this.state.markers.map(marker => {
