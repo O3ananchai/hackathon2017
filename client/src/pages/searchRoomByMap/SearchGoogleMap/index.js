@@ -11,21 +11,21 @@ class SearchGoogleMap extends Component {
     markers: []
   }
 
+  getMarkers = async (lng, lat) => {
+    const { data } = await axios.get(`/api/rooms?lng=${lng}&lat=${lat}`)
+    return data.map(room => ({
+      showInfo: false,
+      room,
+      position: {
+        lat: room.obj.geomtry.coordinates[1],
+        lng: room.obj.geomtry.coordinates[0]
+      }
+    }))
+  }
+
   componentDidMount = async () => {
     const { current } = this.state
-    const { data } = await axios.get(
-      `/api/rooms?lng=${current.lng}&lat=${current.lat}`
-    )
-    const markers = data.map(room => {
-      return {
-        showInfo: false,
-        room,
-        position: {
-          lat: room.obj.geomtry.coordinates[1],
-          lng: room.obj.geomtry.coordinates[0]
-        }
-      }
-    })
+    const markers = await this.getMarkers(current.lng, current.lat)
     this.setState({
       markers
     })
@@ -47,19 +47,7 @@ class SearchGoogleMap extends Component {
 
   handleMapClick = async val => {
     const current = { lat: val.latLng.lat(), lng: val.latLng.lng() }
-    const { data } = await axios.get(
-      `/api/rooms?lng=${current.lng}&lat=${current.lat}`
-    )
-    const markers = data.map(room => {
-      return {
-        showInfo: false,
-        room,
-        position: {
-          lat: room.obj.geomtry.coordinates[1],
-          lng: room.obj.geomtry.coordinates[0]
-        }
-      }
-    })
+    const markers = await this.getMarkers(current.lng, current.lat)
     this.setState({
       markers,
       current
@@ -83,21 +71,7 @@ class SearchGoogleMap extends Component {
   handlePlacesChanged = async () => {
     const places = this._searchBox.getPlaces()
     const current = places[0].geometry.location
-    const { data } = await axios.get(
-      `/api/rooms?lng=${current.lng()}&lat=${current.lat()}`
-    )
-    const markers = data.map(room => {
-      return {
-        showInfo: false,
-        room,
-        position: {
-          lat: room.obj.geomtry.coordinates[1],
-          lng: room.obj.geomtry.coordinates[0]
-        }
-      }
-    })
-
-    // Set markers; set map center to first search result
+    const markers = await this.getMarkers(current.lng(), current.lat())
     const mapCenter =
       places.length > 0 ? places[0].geometry.location : this.state.center
 
